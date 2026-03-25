@@ -1,0 +1,173 @@
+/* ============================================================
+   VulnApp — dashboard.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0a0a0a;
+  --surface: #0f0f0f;
+  --surface2:#131313;
+  --border:  #1f1f1f;
+  --red:     #ff2d2d;
+  --redl:    #ff6b6b;
+  --amber:   #ffaa00;
+  --green:   #33ff33;
+  --text:    #cccccc;
+  --muted:   #555555;
+  --vt:      'VT323', monospace;
+  --mono:    'IBM Plex Mono', monospace;
+}
+
+html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--mono); }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,.18) 3px, rgba(0,0,0,.18) 4px);
+  pointer-events: none; z-index: 999;
+}
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .7rem 2rem;
+  background: rgba(10,10,10,.97);
+  border-bottom: 1px solid var(--red);
+}
+.nav-logo { font-family: var(--vt); font-size: 1.7rem; color: var(--red); }
+.nav-logo span { color: var(--amber); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a { font-size: .7rem; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: .1em; transition: color .15s; }
+.nav-links a:hover { color: var(--red); }
+.nav-user { font-size: .7rem; color: var(--green); }
+.nav-logout { font-size: .7rem; color: var(--red); text-decoration: none; border: 1px solid var(--red); padding: .3rem .8rem; letter-spacing: .08em; text-transform: uppercase; transition: background .15s; }
+.nav-logout:hover { background: var(--red); color: #000; }
+
+/* ── Alert banner ── */
+.alert-banner {
+  background: repeating-linear-gradient(45deg, #1a0000, #1a0000 10px, #0a0000 10px, #0a0000 20px);
+  border-bottom: 1px solid var(--red);
+  padding: .4rem 2rem;
+  font-size: .65rem; color: var(--redl); letter-spacing: .08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: .75rem;
+}
+.alert-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pdot 1s ease-in-out infinite; }
+@keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+
+/* ── Page ── */
+.page { padding: 2rem; }
+
+/* ── Welcome ── */
+.welcome-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp .5s .1s both;
+}
+.welcome-title { font-family: var(--vt); font-size: 2.2rem; color: var(--red); }
+.welcome-title span { color: var(--text); }
+.welcome-sub { font-size: .68rem; color: var(--muted); margin-top: .2rem; letter-spacing: .04em; }
+.session-info { font-size: .65rem; color: var(--muted); text-align: right; line-height: 1.7; }
+.session-info strong { color: var(--amber); }
+
+/* ── Stats ── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border);
+  margin-bottom: 2rem;
+  animation: fadeUp .5s .15s both;
+}
+.stat { background: var(--surface); padding: 1.25rem 1.5rem; }
+.stat-num { font-family: var(--vt); font-size: 2.4rem; color: var(--red); line-height: 1; }
+.stat-num.green { color: var(--green); }
+.stat-num.amber { color: var(--amber); }
+.stat-label { font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-top: .3rem; }
+
+/* ── Grid ── */
+.main-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  animation: fadeUp .5s .2s both;
+}
+
+/* ── Notes panel ── */
+.panel { background: var(--surface); padding: 1.5rem; }
+.panel-title {
+  font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .18em;
+  margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title span { color: var(--red); }
+
+/* Forma za bilješku */
+.note-form { margin-bottom: 1.5rem; }
+.note-form textarea {
+  width: 100%; padding: .75rem 1rem;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text); font-family: var(--mono); font-size: .78rem;
+  resize: vertical; min-height: 90px; outline: none;
+  transition: border-color .15s; caret-color: var(--red);
+}
+.note-form textarea:focus { border-color: var(--red); }
+.note-form textarea::placeholder { color: #2a2a2a; }
+.btn-add {
+  margin-top: .5rem; width: 100%;
+  padding: .6rem; background: transparent; border: 1px solid var(--red);
+  color: var(--red); font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.btn-add:hover { background: var(--red); color: #000; }
+
+/* Lista bilješki */
+.notes-list { display: flex; flex-direction: column; gap: 1px; }
+.note-item {
+  background: var(--surface2); padding: .9rem 1rem;
+  border-left: 2px solid var(--border);
+  transition: border-color .15s;
+}
+.note-item:hover { border-color: var(--red); }
+.note-content { font-size: .75rem; color: var(--text); line-height: 1.65; }
+.note-meta { font-size: .62rem; color: var(--muted); margin-top: .3rem; }
+.note-empty { font-size: .72rem; color: var(--muted); font-style: italic; padding: .5rem 0; }
+
+/* Vuln ispis — namjerno bez escapiranja */
+.vuln-note-content { font-size: .75rem; color: var(--text); line-height: 1.65; }
+
+/* ── Profile panel ── */
+.profile-section { margin-bottom: 1.5rem; }
+.profile-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: .73rem;
+}
+.profile-row:last-child { border-bottom: none; }
+.profile-key { color: var(--muted); text-transform: uppercase; font-size: .62rem; letter-spacing: .1em; }
+.profile-val { color: var(--text); }
+.profile-val.red { color: var(--red); }
+.profile-val.amber { color: var(--amber); }
+
+.vuln-warning {
+  background: #1a0000; border: 1px solid var(--red);
+  padding: .75rem 1rem; margin-top: 1rem;
+  font-size: .68rem; color: var(--redl); line-height: 1.7;
+}
+.vuln-warning strong { color: var(--red); display: block; margin-bottom: .3rem; letter-spacing: .06em; }
+
+/* ── Msg ── */
+.msg { padding: .6rem 1rem; font-size: .7rem; margin-bottom: 1rem; border-left: 3px solid; }
+.msg-error   { background: #1a0000; color: var(--redl); border-color: var(--red); }
+.msg-success { background: #001a00; color: var(--green); border-color: var(--green); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width: 800px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .main-grid { grid-template-columns: 1fr; }
+  nav { padding: .7rem 1rem; }
+  .nav-links { display: none; }
+}

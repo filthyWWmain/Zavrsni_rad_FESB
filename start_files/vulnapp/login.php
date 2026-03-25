@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password']; // RANJIVOST: nema sanitizacije
 
     // RANJIVOST: SQL Injection — korisnički unos direktno u upit
-    // Napad: username = ' OR '1'='1' -- 
+    // Napad: username = ' OR '1'='1' --
     $sql    = "SELECT * FROM vuln_users WHERE username = '$username' AND password = '$password'";
-    $result = $pdo->query($sql);
-    $user   = $result->fetch(PDO::FETCH_ASSOC);
+    $result = mysqli_query($conn, $sql);
+    $user   = mysqli_fetch_assoc($result);
 
     if ($user) {
         // RANJIVOST: nema session_regenerate_id()
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         // RANJIVOST: otkrivamo postoji li korisnik
-        $check = $pdo->query("SELECT id FROM vuln_users WHERE username = '$username'");
-        if ($check->fetch()) {
+        $check = mysqli_query($conn, "SELECT id FROM vuln_users WHERE username = '$username'");
+        if (mysqli_fetch_assoc($check)) {
             $error = 'Pogrešna lozinka za korisnika: ' . $username;
         } else {
             $error = 'Korisnik "' . $username . '" ne postoji.';
@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>VulnApp — Prijava</title>
-    <link rel="stylesheet" href="../styles/normalize.css" />
-    <link rel="stylesheet" href="../../css/vulnapp_login.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VulnApp — Prijava</title>
+  <link rel="stylesheet" href="../../css/normalize.css"/>
+  <link rel="stylesheet" href="../../css/vulnapp_login.css"/>
 </head>
 <body>
 

@@ -32,13 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO vuln_users (username, password, email)
             VALUES ('$username', '$password', '$email')";
 
-    try {
-        $pdo->exec($sql);
+    if (mysqli_query($conn, $sql)) {
         // RANJIVOST: prikazujemo korisničke podatke bez escapiranja — XSS
         $success = 'Registracija uspješna! Dobrodošli, ' . $username . '!';
-    } catch (PDOException $e) {
+    } else {
         // RANJIVOST: prikazujemo SQL grešku korisniku
-        $error = 'Greška: ' . $e->getMessage();
+        $error = 'Greška: ' . mysqli_error($conn) . '<br>SQL: ' . $sql;
     }
 }
 ?>
@@ -48,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VulnApp — Registracija</title>
+  <LINK REL="STYLESHEET" HREF="../../css/normalize.css"/>
   <link rel="stylesheet" href="../../css/vulnapp_register.css"/>
 </head>
 <body>

@@ -73,8 +73,7 @@ $note_count = mysqli_fetch_assoc($count_res)['cnt'];
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VulnApp — Dashboard</title>
-  <link rel="stylesheet" href="../../css/normalize.css"/>
-  <link rel="stylesheet" href="../../css/dashboard.css"/>
+  <link rel="stylesheet" href="vulnapp_dashboard.css"/>
 </head>
 <body>
 

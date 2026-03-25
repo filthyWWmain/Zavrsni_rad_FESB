@@ -5,16 +5,17 @@
 //  Problem: greška otkriva detalje baze korisniku
 // ============================================================
 
-$dsn        = 'mysql:host=localhost;dbname=webseclab;charset=utf8mb4';
-$dbusername = 'root';
-$dbpassword = '';
+$host     = 'localhost';
+$dbname   = 'webseclab';
+$username = 'root';
+$password = '';
 
-try {
-    $pdo = new PDO($dsn, $dbusername, $dbpassword);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    // RANJIVOST: prikazujemo punu grešku korisniku
-    // Otkriva: ime baze, korisnika, host, strukturu servera
-    echo 'Connection failed: ' . $e->getMessage();
-    exit;
+// RANJIVO: mysqli_connect bez error handlinga
+$conn = mysqli_connect($host, $username, $password, $dbname);
+
+// RANJIVO: prikazuje detalje greške korisniku
+if (!$conn) {
+    die('Connection failed: ' . mysqli_connect_error());
 }
+
+mysqli_set_charset($conn, 'utf8mb4');
