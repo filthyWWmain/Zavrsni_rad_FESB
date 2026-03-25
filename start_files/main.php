@@ -18,7 +18,7 @@
     <li><a href="#napadi">Napadi</a></li>
     <li><a href="#o-projektu">O projektu</a></li>
   </ul>
-  <a href="login.php" class="nav-cta">Prijava</a>
+  <div class="nav-logo">FESB -<span> Računarstvo,</span> Završni<span> rad</span></div>
 </nav>
 
 <!-- HERO -->

@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once '../db_connect.php';
+require_once 'db_connect.php';
 
 $errors  = [];
 $success = '';

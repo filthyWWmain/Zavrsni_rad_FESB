@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 // ── Konekcija na bazu (PDO) ──────────────────────────────────
-require_once '../db_connect.php';
+require_once 'db_connect.php';
 
 $error   = '';
 $success = '';

@@ -29,14 +29,17 @@ $username = $logged_in ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UT
 <nav>
   <div class="nav-logo">Secure<span>App</span></div>
   <ul class="nav-links">
-    <li><a href="index.php">Početna</a></li>
-    <li><a href="login.php">Prijava</a></li>
-    <li><a href="register.php">Registracija</a></li>
-    <?php if ($logged_in): ?>
+  <li><a href="index.php">Početna</a></li>
+
+  <?php if ($logged_in): ?>
     <li><a href="dashboard.php">Panel</a></li>
     <li><a href="logout.php">Odjava</a></li>
-    <?php endif; ?>
-  </ul>
+  <?php else: ?>
+    <li><a href="login.php">Prijava</a></li>
+    <li><a href="register.php">Registracija</a></li>
+  <?php endif; ?>
+
+</ul>
   <?php if ($logged_in): ?>
     <span class="nav-user">✓ <?= $username ?></span>
   <?php else: ?>
@@ -61,7 +64,7 @@ $username = $logged_in ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UT
       Prijavite se ili registrirajte za pristup panelu.
     </p>
     <div class="hero-btns">
-      <?php if ($logged_in): ?>
+      <?php if (isset($_SESSION['user_id'])): ?>
         <a href="dashboard.php" class="btn btn-teal">Otvori panel</a>
         <a href="logout.php" class="btn btn-outline">Odjava</a>
       <?php else: ?>
