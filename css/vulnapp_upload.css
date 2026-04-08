@@ -1,0 +1,218 @@
+/* ============================================================
+   VulnApp — upload.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0a0a0a;
+  --surface: #0f0f0f;
+  --surface2:#131313;
+  --border:  #1f1f1f;
+  --red:     #ff2d2d;
+  --redl:    #ff6b6b;
+  --amber:   #ffaa00;
+  --green:   #33ff33;
+  --text:    #cccccc;
+  --muted:   #555555;
+  --vt:      'VT323', monospace;
+  --mono:    'IBM Plex Mono', monospace;
+}
+
+html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--mono); }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,.18) 3px, rgba(0,0,0,.18) 4px);
+  pointer-events: none; z-index: 999;
+}
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .7rem 2rem;
+  background: rgba(10,10,10,.97);
+  border-bottom: 1px solid var(--red);
+}
+.nav-logo { font-family: var(--vt); font-size: 1.7rem; color: var(--red); }
+.nav-logo span { color: var(--amber); }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a { font-size: .7rem; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: .1em; transition: color .15s; }
+.nav-links a:hover { color: var(--red); }
+.nav-user { font-size: .7rem; color: var(--green); }
+.nav-logout { font-size: .7rem; color: var(--red); text-decoration: none; border: 1px solid var(--red); padding: .3rem .8rem; letter-spacing: .08em; text-transform: uppercase; transition: background .15s; }
+.nav-logout:hover { background: var(--red); color: #000; }
+
+/* ── Alert banner ── */
+.alert-banner {
+  background: repeating-linear-gradient(45deg, #1a0000, #1a0000 10px, #0a0000 10px, #0a0000 20px);
+  border-bottom: 1px solid var(--red);
+  padding: .4rem 2rem;
+  font-size: .65rem; color: var(--redl); letter-spacing: .08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: .75rem;
+}
+.alert-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pdot 1s ease-in-out infinite; }
+@keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+
+/* ── Page ── */
+.page { padding: 2rem; max-width: 1100px; }
+
+.page-title {
+  font-family: var(--vt);
+  font-size: 2.5rem;
+  color: var(--red);
+  margin-bottom: .3rem;
+  animation: fadeUp .5s .1s both;
+}
+.page-sub {
+  font-size: .7rem; color: var(--muted); margin-bottom: 2rem;
+  animation: fadeUp .5s .15s both;
+}
+
+/* ── Grid ── */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  animation: fadeUp .5s .2s both;
+}
+
+.panel { background: var(--surface); padding: 1.75rem; }
+
+.panel-title {
+  font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .18em;
+  margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title .badge-red {
+  font-size: .58rem; background: rgba(255,45,45,.12); color: var(--red);
+  border: 1px solid rgba(255,45,45,.3); padding: .15rem .5rem;
+}
+
+/* ── Drop zone ── */
+.drop-zone {
+  border: 2px dashed var(--border);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  transition: border-color .2s;
+  cursor: pointer;
+  position: relative;
+}
+.drop-zone:hover { border-color: var(--red); }
+.drop-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.drop-icon { font-size: 2rem; margin-bottom: .75rem; }
+.drop-text { font-size: .75rem; color: var(--muted); line-height: 1.6; }
+.drop-text strong { color: var(--text); display: block; margin-bottom: .3rem; }
+.drop-hint { font-size: .65rem; color: var(--red); margin-top: .5rem; font-style: italic; }
+
+/* ── Submit ── */
+.btn-upload {
+  width: 100%; padding: .75rem;
+  background: var(--red); color: #000; border: none;
+  font-family: var(--mono); font-size: .75rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+.btn-upload:hover { background: var(--redl); transform: translateY(-1px); }
+
+/* ── Msg ── */
+.msg {
+  padding: .7rem 1rem; font-size: .72rem; line-height: 1.6;
+  margin-bottom: 1.25rem; border-left: 3px solid;
+}
+.msg-error   { background: #1a0000; color: var(--redl);  border-color: var(--red); }
+.msg-success { background: #001500; color: var(--green); border-color: var(--green); }
+.msg code { font-family: var(--mono); background: rgba(255,255,255,.06); padding: .1rem .3rem; }
+
+/* ── File list ── */
+.files-list { margin-top: 1.5rem; }
+.files-label {
+  font-size: .6rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .18em; margin-bottom: .75rem;
+  padding-bottom: .5rem; border-bottom: 1px solid var(--border);
+}
+.file-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem .75rem;
+  background: var(--surface2);
+  border-left: 2px solid var(--border);
+  margin-bottom: 1px;
+  transition: border-color .15s;
+}
+.file-item:hover { border-color: var(--red); }
+.file-item-name { font-size: .73rem; color: var(--text); }
+.file-item-name a { color: var(--red); text-decoration: none; }
+.file-item-name a:hover { text-decoration: underline; }
+.file-item-ext {
+  font-size: .6rem; padding: .15rem .5rem;
+  background: rgba(255,45,45,.1); color: var(--red);
+  border: 1px solid rgba(255,45,45,.2); letter-spacing: .06em;
+}
+.file-item-ext.php { background: rgba(255,45,45,.25); color: #ff0000; border-color: #ff0000; animation: blink-ext 1s step-end infinite; }
+@keyframes blink-ext { 50% { opacity: .4; } }
+
+.file-empty { font-size: .72rem; color: var(--muted); font-style: italic; }
+
+/* ── Vuln info ── */
+.vuln-box {
+  background: #120000; border: 1px solid var(--red);
+  padding: 1.25rem; margin-top: 1.5rem;
+}
+.vuln-box-title {
+  font-size: .65rem; color: var(--red); letter-spacing: .14em;
+  text-transform: uppercase; margin-bottom: .75rem;
+}
+.vuln-box-item {
+  font-size: .7rem; color: var(--muted); padding: .35rem 0;
+  border-bottom: 1px solid #1a0000; line-height: 1.6;
+}
+.vuln-box-item:last-child { border-bottom: none; }
+.vuln-box-item strong { color: var(--redl); }
+
+/* ── Shell output ── */
+.shell-section { margin-top: 1.5rem; }
+.shell-label {
+  font-size: .6rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .18em; margin-bottom: .5rem;
+}
+.shell-form { display: flex; gap: .5rem; }
+.shell-input {
+  flex: 1; padding: .6rem .9rem;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--green); font-family: var(--mono); font-size: .78rem;
+  outline: none; caret-color: var(--green);
+}
+.shell-input:focus { border-color: var(--green); }
+.shell-input::placeholder { color: #2a2a2a; }
+.btn-exec {
+  padding: .6rem 1.2rem;
+  background: transparent; border: 1px solid var(--green);
+  color: var(--green); font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.btn-exec:hover { background: var(--green); color: #000; }
+.shell-output {
+  margin-top: .75rem; padding: .9rem 1rem;
+  background: #030a03; border: 1px solid #0a2a0a;
+  font-size: .72rem; color: var(--green); font-family: var(--mono);
+  line-height: 1.8; white-space: pre-wrap; min-height: 60px;
+  word-break: break-all;
+}
+.shell-output.empty { color: var(--muted); font-style: italic; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width: 800px) {
+  .upload-grid { grid-template-columns: 1fr; }
+  nav { padding: .7rem 1rem; }
+  .nav-links { display: none; }
+}

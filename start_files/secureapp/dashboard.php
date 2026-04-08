@@ -109,6 +109,7 @@ $note_count = count($notes);
   <div class="nav-logo">Secure<span>App</span></div>
   <ul class="nav-links">
     <li><a href="index.php">Početna</a></li>
+    <li><a href="upload.php">Upload</a></li>
     <li><a href="dashboard.php">Dashboard</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:1rem;">
