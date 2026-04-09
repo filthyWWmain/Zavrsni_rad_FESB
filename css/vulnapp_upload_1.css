@@ -1,0 +1,103 @@
+/* ============================================================
+   VulnApp — upload.css
+   ============================================================ */
+
+@import url('base.css');
+
+/* ── Upload grid ── */
+.upload-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+}
+
+/* ── Drop zone ── */
+.drop-zone {
+  border: 2px dashed var(--border2);
+  padding: 2.5rem 1.5rem; text-align: center;
+  margin-bottom: 1.25rem; transition: border-color .18s;
+  cursor: pointer; position: relative;
+}
+.drop-zone:hover { border-color: var(--accent); }
+.drop-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0;
+  cursor: pointer; width: 100%; height: 100%;
+}
+.drop-icon { font-size: 2rem; margin-bottom: .75rem; }
+.drop-text { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+.drop-text strong { display: block; color: var(--text); margin-bottom: .25rem; font-weight: 600; }
+.drop-hint { font-family: var(--mono); font-size: .65rem; color: var(--accent); margin-top: .4rem; }
+.drop-hint.danger { color: var(--danger); font-weight: 500; }
+
+/* ── File list ── */
+.files-label {
+  font-family: var(--mono); font-size: .62rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .12em;
+  margin-bottom: .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border);
+}
+.file-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem .75rem; background: var(--surface2);
+  border-left: 2px solid transparent; margin-bottom: 1px; transition: border-color .18s;
+}
+.file-item:hover { border-color: var(--border2); }
+.file-name { font-family: var(--mono); font-size: .73rem; color: var(--text); }
+.file-name a { color: var(--accent); text-decoration: none; }
+.file-name a:hover { text-decoration: underline; }
+.file-name small { display: block; font-size: .62rem; color: var(--muted); margin-top: .1rem; }
+.file-ext {
+  font-family: var(--mono); font-size: .6rem; padding: .15rem .5rem;
+  background: var(--surface2); border: 1px solid var(--border2); color: var(--muted);
+}
+.file-ext.php { background: var(--danger-l); color: var(--danger); border-color: var(--accent-m); font-weight: 600; }
+
+.file-empty { font-family: var(--mono); font-size: .72rem; color: var(--muted); font-style: italic; padding: .5rem 0; }
+
+/* ── Vuln info box ── */
+.vuln-box {
+  background: var(--danger-l); border: 1px solid var(--accent-m);
+  padding: 1.1rem; margin-top: 1.5rem;
+}
+.vuln-box-title {
+  font-family: var(--mono); font-size: .65rem; color: var(--danger);
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: .75rem;
+}
+.vuln-box-item {
+  font-family: var(--mono); font-size: .7rem; color: #7a2020;
+  padding: .3rem 0; border-bottom: 1px solid #f0c4b8; line-height: 1.6;
+}
+.vuln-box-item:last-child { border-bottom: none; }
+.vuln-box-item strong { color: var(--danger); }
+
+/* ── Shell section ── */
+.shell-section { margin-top: 1.5rem; }
+.shell-label {
+  font-family: var(--mono); font-size: .62rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem;
+}
+.shell-wrap { display: flex; gap: .5rem; }
+.shell-input {
+  flex: 1; padding: .6rem .9rem;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text); font-family: var(--mono); font-size: .78rem;
+  outline: none; transition: border-color .18s;
+}
+.shell-input:focus { border-color: var(--deep); }
+.shell-input::placeholder { color: var(--muted2); }
+.btn-exec {
+  padding: .6rem 1.2rem; background: var(--deep); color: #fff;
+  border: none; font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .08em; cursor: pointer; transition: opacity .15s;
+}
+.btn-exec:hover { opacity: .8; }
+.shell-output {
+  margin-top: .6rem; padding: .85rem 1rem;
+  background: #f0ede8; border: 1px solid var(--border2);
+  font-family: var(--mono); font-size: .72rem; color: var(--text);
+  line-height: 1.8; white-space: pre-wrap; min-height: 55px;
+  word-break: break-all;
+}
+.shell-output.empty { color: var(--muted); font-style: italic; }
+
+@media (max-width: 800px) {
+  .upload-grid { grid-template-columns: 1fr; }
+}

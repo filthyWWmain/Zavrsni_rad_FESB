@@ -54,8 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VulnApp — Prijava</title>
-  <link rel="stylesheet" href="../../css/normalize.css"/>
-  <link rel="stylesheet" href="../../css/vulnapp_login.css"/>
+  <link rel="stylesheet" href="../../css/vulnapp_login_1.css"/>
 </head>
 <body>
 

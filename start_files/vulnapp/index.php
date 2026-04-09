@@ -10,7 +10,6 @@ $username  = $logged_in ? $_SESSION['username'] : '';
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VulnApp — Dobrodošli</title>
   <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="../styles/normalize.css" />
     <link rel="stylesheet" href="../../css/vulnapp_index.css" />
 </head>
 <body>

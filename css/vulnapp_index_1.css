@@ -1,0 +1,167 @@
+/* ============================================================
+   VulnApp — index.css
+   ============================================================ */
+
+@import url('base.css');
+
+/* ── Hero ── */
+.hero {
+  padding: 4rem 2rem 3rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  font-family: var(--mono);
+  font-size: .68rem;
+  color: var(--accent);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--deep);
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+/* ── Stats row ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  padding: 1.5rem 2rem;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: .65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* ── Vuln cards grid ── */
+.vuln-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 1px;
+}
+
+.vuln-card {
+  background: var(--surface);
+  padding: 1.5rem;
+  border-top: 3px solid transparent;
+  transition: background .2s;
+}
+.vuln-card:hover { background: var(--surface2); }
+.vuln-card.high   { border-top-color: var(--danger); }
+.vuln-card.medium { border-top-color: var(--warning); }
+
+.vuln-card-id {
+  font-family: var(--mono);
+  font-size: .65rem;
+  color: var(--muted2);
+  margin-bottom: .4rem;
+  letter-spacing: .06em;
+}
+.vuln-card-name {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: .5rem;
+}
+.vuln-card-desc {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: .9rem;
+}
+
+/* ── Quick access ── */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.quick-card {
+  background: var(--surface);
+  padding: 1.75rem;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+  transition: background .2s;
+}
+.quick-card:hover { background: var(--accent-l); }
+
+.quick-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--border2);
+  line-height: 1;
+  margin-bottom: .75rem;
+  transition: color .2s;
+}
+.quick-card:hover .quick-num { color: var(--accent-m); }
+
+.quick-title {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: .35rem;
+}
+.quick-sub {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.quick-arrow {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--accent);
+  margin-top: 1rem;
+}
+
+@media (max-width: 800px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .hero { padding: 2.5rem 1rem 2rem; }
+}
