@@ -1,0 +1,15 @@
+Izgled stranice font / text size / boje
+
+Bi li bilo bolje da rucno radim napade ili da koristim OWAS ZAP i slicne? triba li ih spomenjati u radu?
+
+Koliko vremena imam za obranu - sto na obrani moran raditi
+
+Triban li u završnom radu objašnjavati strukturu web aplikacije
+
+Sto sam stvarima koje nemaju prijevod na hrvatski ili je prijevod jako los? Mogu li koristii engleske izraze i kako?
+
+pusti neki prilozi u literaturi? Kako citirati kod? npr. IF($RESULT == 5);
+
+
+Sto kad zalipimo kod? kako ga triba oznaciti? koa tablicu ili sliku?
+
